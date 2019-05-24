@@ -1,0 +1,2 @@
+class Sakagura < ApplicationRecord
+end
