@@ -1,0 +1,96 @@
+<div class="container my-4">
+  <div class="row">
+    <div class="col-sm-7 offset-sm-3 border pb-4">
+      <div class="text-center mb-4 mt-4">
+        <h3>アカウントを登録</h3>
+      </div>
+
+      <%= form_with(model: @account, local: true) do |f| %>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :mail_address, 'メールアドレス' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.email_field :mail_address, class: 'form-control' %>
+          </div>
+        </div>
+        
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :account_name, 'ニックネーム（表示名）' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :account_name, class: 'form-control' %>
+          </div>
+        </div>
+        
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :birthday, '生年月日' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.date_select(:birthday,
+              use_month_numbers: true,
+              start_year: (Time.now.year - 100),
+              end_year: (Time.now.year),
+              default: Date.new(Time.now.year - 20, 1, 1), 
+              date_separator: '/', 
+            class: 'form-control') %>
+          </div>
+        </div>
+        
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :sex, '性別' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.radio_button :sex, 0, {} %> 男性
+            <%= f.radio_button :sex, 1, {} %> 女性
+            <%= f.radio_button :sex, 2, {} %> その他
+          </div>
+        </div>
+        
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :todofuken_id, '出身都道府県' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.select :todofuken_id, [['北海道　　　', '1'],['青森', '2']], class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :password, 'パスワード' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.password_field :password, class: 'form-control', placeholder: '8文字以上で英語と数字を各1文字以上入力' %>
+          </div>
+        </div>
+        
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :password_confirmation, 'パスワード（確認用）' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+        </div>
+        
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :public_private, 'テイスティングノートを公開する' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.radio_button :public_private, 0, {checked: true} %> 公開
+            <%= f.radio_button :public_private, 1, {} %> 非公開
+          </div>
+        </div>
+        
+        <div class="text-center mt-2">
+          <%= f.submit 'アカウント登録', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
