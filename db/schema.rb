@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_103556) do
+ActiveRecord::Schema.define(version: 2019_05_25_093333) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "todofuken_id"
     t.integer "deleted_at"
     t.string "mail_address"
     t.string "account_name"
-    t.string "birthday"
+    t.date "birthday"
     t.integer "sex"
     t.string "password_digest"
     t.integer "public_private"

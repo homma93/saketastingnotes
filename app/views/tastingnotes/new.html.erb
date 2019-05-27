@@ -1,0 +1,200 @@
+<div class="container my-4">
+  <div class="row">
+    <%= render 'layouts/lsidebar' %>
+    
+    <div class="col-sm-6 border">
+      <div class="text-center mb-4 mt-4">
+        <h4>ティスティングノートを作成</h4>
+      </div>
+
+      <%= form_with(model: @tastingnote, local: true) do |f| %>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :tasting_day, 'テイスティング日' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.date_select(:tasting_day,
+              use_month_numbers: true,
+              start_year: (Time.now.year - 2),
+              end_year: (Time.now.year),
+              default: Date.new(Time.now.year, Time.now.month, Time.now.day), 
+              date_separator: '/', 
+            class: 'form-control') %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :sake_id, '銘柄' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.select :sake_id, [['獺祭','1'],['越乃寒梅','2']], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :sake_id, '種類' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.select :sake_id, [['普通酒','1'],['本醸造酒','2'],['特別本醸造酒','3'],['純米酒','4'],['特別純米酒','5'],
+                                    ['吟醸酒','6'],['純米吟醸酒','7'],['大吟醸酒','8'],['純米大吟醸酒','9'],['その他・不明','999999']], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :sake_supplement, '銘柄補足' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :sake_supplement, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :how_to_drink, '飲み方' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.radio_button :how_to_drink, 0, {checked: true} %> 冷
+            <%= f.radio_button :how_to_drink, 1, {} %> 常温
+            <%= f.radio_button :how_to_drink, 2, {} %> ぬる燗
+            <%= f.radio_button :how_to_drink, 3, {} %> 熱燗
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :color, '種類' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.select :color, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :smell, '香り' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.select :smell, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :smell_supplement, '味補足' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :smell_supplement, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            味
+          </div>
+          <div class='col-sm-3'>
+            <%= f.label :sweet_taste, '甘味' %>
+          </div>
+          <div class='col-sm-5'>
+            <%= f.select :sweet_taste, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'></div>
+          <div class='col-sm-3'>
+            <%= f.label :acidity, '酸味' %>
+          </div>
+          <div class='col-sm-5'>
+            <%= f.select :acidity, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'></div>
+          <div class='col-sm-3'>
+            <%= f.label :bitter_taste, '苦味' %>
+          </div>
+          <div class='col-sm-5'>
+            <%= f.select :bitter_taste, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'></div>
+          <div class='col-sm-3'>
+            <%= f.label :umami, '旨味' %>
+          </div>
+          <div class='col-sm-5'>
+            <%= f.select :umami, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'></div>
+          <div class='col-sm-3'>
+            <%= f.label :alcohol, 'アルコール刺激' %>
+          </div>
+          <div class='col-sm-5'>
+            <%= f.select :alcohol, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :taste_supplement, '味補足' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :taste_supplement, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :image, '日本酒画像' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.file_field :image, class: 'form-control input-lg' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :tumami_image1, 'つまみ画像１' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.file_field :tumami_image1, class: 'form-control input-lg' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :tumami_image2, 'つまみ画像２' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.file_field :image, class: 'form-control input-lg' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :tumami_image3, 'つまみ画像３' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.file_field :tumami_image3, class: 'form-control input-lg' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :comment, 'コメント' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :comment, class: 'form-control input-lg' %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class='col-sm-4'>
+            <%= f.label :evaluation, '総合評価' %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :evaluation, class: 'form-control input-lg' %>
+          </div>
+        </div>
+        
+        
+        
+        
+        <div class="text-center">
+          <%= f.submit 'テイスティングノート作成', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+    
+    <%= render 'layouts/rsidebar' %>
+  </div>
+</div>
