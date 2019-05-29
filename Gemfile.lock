@@ -146,6 +146,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rmagick (3.1.0)
     ruby_dep (1.5.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -205,6 +206,7 @@ DEPENDENCIES
   pry-byebug
   puma (~> 3.11)
   rails (~> 5.2.2)
+  rmagick
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)

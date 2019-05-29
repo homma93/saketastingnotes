@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if login(email, password)
       redirect_to tastingnotes_path
     else
-      flash.now[:danger] = 'ログインに失敗しました。'
+      flash.now[:danger] = 'アカウントまたはパスワードが異なります。'
       render 'new'
     end
   end
