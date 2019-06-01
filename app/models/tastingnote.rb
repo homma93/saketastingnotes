@@ -16,4 +16,5 @@ class Tastingnote < ApplicationRecord
   
   belongs_to :account, optional: true
   belongs_to :sake, optional: true
+  
 end

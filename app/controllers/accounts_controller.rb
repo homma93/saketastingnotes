@@ -14,9 +14,17 @@ class AccountsController < ApplicationController
   end
 
   def edit
+    @account = Account.find(params[:id])
   end
 
   def update
+    @account = Account.find(params[:id])
+    
+    if @account.update(account_params)
+    else
+      flash.now[:danger] = 'アカウントの更新に失敗しました。'
+      render :edit
+    end
   end
 
   def destroy

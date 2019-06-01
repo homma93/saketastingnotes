@@ -2,77 +2,12 @@
   <div class="row">
     <%= render 'layouts/lsidebar' %>
     
-    <div class="col-sm-6 border">
-      <% @tastingnotes.each do |tastingnote| %>
-        <div class="row">
-          <div class="col-sm-12 h5 text-danger mt-4">
-            銘柄:獺祭 　総合評価：<%= tastingnote.evaluation %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 text-muted">
-            <%= current_account.account_name %> - 
-            <%= tastingnote.tasting_day %>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-sm-8">
-            <%= tastingnote.comment %>
-          </div>
-          <div class="text-right col-sm-4">
-            <%= link_to '編集', edit_tastingnote_path(tastingnote), class: 'btn btn-outline-info btn-xs'%>
-            <%= link_to '削除', tastingnote, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-outline-info btn-xs'  %>
-          </div>
-        </div>
-        <div class="row mt-2">
-          <div class="col-sm-8">
-            <% if tastingnote.image.blank? %>
-              <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
-            <% else %>
-              <%= image_tag tastingnote.image.to_s, class: 'img-fluid border rounded' %>
-            <% end %>
-          </div>
-          <div class="col-sm-4">
-            <div class="row d-sm-none d-none d-md-block">
-              <div class="col-sm-12">
-                <% if tastingnote.tumami_image1.blank? %>
-                  <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
-                <% else %>
-                  <%= image_tag tastingnote.tumami_image1.to_s, class: 'img-fluid border rounded' %>
-                <% end %>
-              </div>
-            </div>
-            <div class="row mt-3 d-none d-md-block">
-              <div class="col-sm-12">
-                <% if tastingnote.tumami_image2.blank? %>
-                  <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
-                <% else %>
-                  <%= image_tag tastingnote.tumami_image2.to_s, class: 'img-fluid border rounded' %>
-                <% end %>
-              </div>
-            </div>
-            <div class="row mt-3 d-none d-md-block">
-              <div class="col-sm-12">
-                <% if tastingnote.tumami_image3.blank? %>
-                  <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
-                <% else %>
-                  <%= image_tag tastingnote.tumami_image3.to_s, class: 'img-fluid border rounded' %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row text-center  mt-2">
-          <div class="col-sm-6">
-            <%= link_to 'テイスティングノート詳細', logout_path, class: 'btn btn-outline-info btn-xs btn-block', method: :delete %>
-          </div>
-          <div class="col-sm-6">
-            <%= link_to 'みんなのテイスティングノート', logout_path, class: 'btn btn-outline-info btm-xs btn-block', method: :delete %>
-          </div>
-        </div>
-        <div class="row border-bottom mt-2"><hr></div>
-      <% end %>
-    </div>
+    <% if @view_num == 1 %>
+      <%= render 'tastingnotes', tastingnotes: @tastingnotes%>
+    <% elsif @view_num == 2 %>
+      <%= render 'sakemap', tastingnote_nums: @tastingnote_nums, tastingnote_region_nums: @tastingnote_region_nums, sakagura_todofuken_nums: @sakagura_todofuken_nums, tastingnote_sakagura_nums: @tastingnote_sakagura_nums %>
+    <% else %>
+    <% end %>
     
     <%= render 'layouts/rsidebar' %>
   </div>

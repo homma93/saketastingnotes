@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_25_093333) do
+ActiveRecord::Schema.define(version: 2019_05_31_023900) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "todofuken_id"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_093333) do
     t.bigint "account_id"
     t.bigint "sake_id"
     t.integer "deleted_at"
-    t.string "tasting_day"
+    t.date "tasting_day"
     t.integer "sake_kind"
     t.string "sake_supplement"
     t.integer "how_to_drink"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_093333) do
     t.integer "sakagura_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "region_id"
   end
 
   add_foreign_key "accounts", "todofukens"

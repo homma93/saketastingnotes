@@ -1,0 +1,102 @@
+<div class="container-fluid mb-4">
+  <div class="row">
+    <%= render 'layouts/lsidebar' %>
+
+      <div class="col-sm-6 border">
+        <div class="row">
+          <div class="col-sm-12 h5 text-danger mt-4">
+            銘柄:<%= @tastingnote.sake.meigara_name %> 　総合評価：<%= @tastingnote.evaluation.to_f %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 text-muted">
+            <%= @tastingnote.account.account_name %> - 
+            <%= @tastingnote.tasting_day.strftime("%Y年%m月%d日") %>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-sm-8">
+            <%= @tastingnote.comment %>
+          </div>
+          <div class="text-right col-sm-4">
+            <%= link_to '削除', @tastingnote, method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-outline-info btn-xs'  %>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-8">
+            <% if @tastingnote.image.blank? %>
+              <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
+            <% else %>
+              <%= image_tag @tastingnote.image.url, class: 'img-fluid border rounded' %>
+            <% end %>
+          </div>
+          <div class="col-sm-4">
+            <div class="row d-sm-none d-none d-md-block">
+              <div class="col-sm-12">
+                <% if @tastingnote.tumami_image1.blank? %>
+                  <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
+                <% else %>
+                  <%= image_tag @tastingnote.tumami_image1.url, class: 'img-fluid border rounded' %>
+                <% end %>
+              </div>
+            </div>
+            <div class="row mt-3 d-none d-md-block">
+              <div class="col-sm-12">
+                <% if @tastingnote.tumami_image2.blank? %>
+                  <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
+                <% else %>
+                  <%= image_tag @tastingnote.tumami_image2.url, class: 'img-fluid border rounded' %>
+                <% end %>
+              </div>
+            </div>
+            <div class="row mt-3 d-none d-md-block">
+              <div class="col-sm-12">
+                <% if @tastingnote.tumami_image3.blank? %>
+                  <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
+                <% else %>
+                  <%= image_tag @tastingnote.tumami_image3.url, class: 'img-fluid border rounded' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+           <div class="col-sm-2">種類：</div>
+           <div class="col-sm-10"><%= @tastingnote.sake_kind %> <%= @tastingnote.sake_supplement %></div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-2">飲み方：</div>
+          <div class="col-sm-10"><%= @tastingnote.how_to_drink %></div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-2">色：</div>
+          <div class="col-sm-10"><%= @tastingnote.color %></div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-2">香り：</div>
+          <div class="col-sm-10"><%= @tastingnote.smell %> <%= @tastingnote.smell_supplement %></div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-2">味：</div>
+          <div class="col-sm-10">
+            甘味　<%= @tastingnote.sweet_taste %>　
+            酸味　<%= @tastingnote.acidity %>　
+            苦味　<%= @tastingnote.bitter_taste %>　
+            旨味　<%= @tastingnote.smell %> <%= @tastingnote.umami %>　
+            アルコール刺激　<%= @tastingnote.alcohol %>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-12"><%= @tastingnote.taste_supplement %></div>
+        </div>
+        <div class="row text-center  mt-2">
+          <div class="col-sm-6">
+            <%= link_to 'みんなのテイスティングノート', tastingnotes_path(@tastingnote), class: 'btn btn-outline-info btm-xs btn-block' %>
+          </div>
+        </div>
+        <div class="row border-bottom mt-2"><hr></div>
+      </div>
+
+    <%= render 'layouts/rsidebar' %>
+  </div>
+</div>

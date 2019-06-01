@@ -32,10 +32,10 @@
         </div>
         <div class="row form-group">
           <div class='col-sm-3'>
-            <%= f.label :sake_id, '種類' %>
+            <%= f.label :sake_kind, '種類' %>
           </div>
           <div class='col-sm-9'>
-            <%= f.select :sake_id, [['普通酒','1'],['本醸造酒','2'],['特別本醸造酒','3'],['純米酒','4'],['特別純米酒','5'],
+            <%= f.select :sake_kind, [['普通酒','1'],['本醸造酒','2'],['特別本醸造酒','3'],['純米酒','4'],['特別純米酒','5'],
                                     ['吟醸酒','6'],['純米吟醸酒','7'],['大吟醸酒','8'],['純米大吟醸酒','9'],['その他・不明','999999']], class: 'form-control' %>
           </div>
         </div>
@@ -142,7 +142,7 @@
             <%= f.label :image, '日本酒画像' %>
           </div>
           <div class='col-sm-9'>
-            <%= f.file_field :image, class: 'form-control input-lg' %>
+            <%= f.file_field :image %>
           </div>
         </div>
         <div class="row form-group">
@@ -150,7 +150,7 @@
             <%= f.label :tumami_image1, 'つまみ画像１' %>
           </div>
           <div class='col-sm-9'>
-            <%= f.file_field :tumami_image1, class: 'form-control input-lg' %>
+            <%= f.file_field :tumami_image1 %>
           </div>
         </div>
         <div class="row form-group">
@@ -158,7 +158,7 @@
             <%= f.label :tumami_image2, 'つまみ画像２' %>
           </div>
           <div class='col-sm-9'>
-            <%= f.file_field :tumami_image2, class: 'form-control input-lg' %>
+            <%= f.file_field :tumami_image2 %>
           </div>
         </div>
         <div class="row form-group">
@@ -166,7 +166,7 @@
             <%= f.label :tumami_image3, 'つまみ画像３' %>
           </div>
           <div class='col-sm-9'>
-            <%= f.file_field :tumami_image3, class: 'form-control input-lg' %>
+            <%= f.file_field :tumami_image3 %>
           </div>
         </div>
         <div class="row form-group">
@@ -195,7 +195,6 @@
         </div>
       <% end %>
     </div>
-    
     <%= render 'layouts/rsidebar' %>
   </div>
 </div>
