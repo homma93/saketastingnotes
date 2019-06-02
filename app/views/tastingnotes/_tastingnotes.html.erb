@@ -1,6 +1,6 @@
 <div class="col-sm-6 border">
   <% @tastingnotes.each do |tastingnote| %>
-    <div class="row">
+    <div class="row mt-8">
       <div class="col-sm-12 h5 text-danger mt-4">
         銘柄:<%= tastingnote.sake.meigara_name %> 　総合評価：<%= tastingnote.evaluation.to_f %>
       </div>
@@ -66,7 +66,7 @@
       </div>
       <div class="col-sm-6">
         <% if tastingnote.account_id == current_account.id %>
-          <%= link_to 'この銘柄のテイスティングノート', tastingnotes_path(cnt_flg: 1, account_id:tastingnote.account_id, sake_id: tastingnote.sake_id), 
+          <%= link_to 'この銘柄のテイスティングノート', tastingnotes_path(view: 1, account_id:tastingnote.account_id, sake_id: tastingnote.sake_id), 
             class: 'btn btn-outline-info btm-xs btn-block' %><br>
           <small class="text-muted">他ユーザーの記録がご覧になれます。</small>
         <% end %>

@@ -2,7 +2,10 @@
   <div class="text-left mb-4 mt-4">
     <h4>My日本酒マップ</h4>
   </div>
-  <%= image_tag 'map.png', class: 'img-fluid border rounded' %>
+  <div>
+    <%= image_tag 'map.png', class: 'img-fluid border rounded' %>
+    <p>100</p>
+  </div>
   <div class="row mt-4">
     <div class="col-sm-12 h5">
       総テイスティング数：<%= @tastingnote_nums %>
@@ -28,36 +31,27 @@
             <td class="text-center"><%= e %>%</td>
           </tr>
         <% end %>
-        
       </table>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      地域の日本酒も飲んでみませんか？
+  <div class="row mt-4">
+    <div class="col-sm-4">
+      地元の日本酒を探そう！
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      普段飲まない地域の日本酒も飲んでみませんか？
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-1"></div>
     <div class="col-sm-8">
-      北海道の酒蔵一覧
+      まだ見ぬ日本酒を探そう！
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-8">
-      北陸地方の酒蔵一覧
+  <div class="row mb-4">
+    <div class="col-sm-4">
+      <%= link_to place(@region_id.first.todofuken.region_id.to_i), todofukens_path(serch: 2, region_id:8), class: 'btn btn-outline-info btm-xs btn-block' %>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-8">
-      中部地方の酒蔵一覧
+    <% random_place(@region_id.first.todofuken.region_id.to_i) %>
+    <div class="col-sm-4">
+      <%= link_to place(@place[0]), todofukens_path(serch: 2, region_id:@place[0]), class: 'btn btn-outline-info btm-xs btn-block' %>
+    </div>
+    <div class="col-sm-4">
+      <%= link_to place(@place[1]), todofukens_path(serch: 2, region_id:@place[1]), class: 'btn btn-outline-info btm-xs btn-block' %>
     </div>
   </div>
 </div>

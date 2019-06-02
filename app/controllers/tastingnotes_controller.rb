@@ -3,11 +3,11 @@ class TastingnotesController < ApplicationController
   
   def index
     if logged_in?
-      if params[:cnt_flg].to_i == 1 #みんなのテイスティングノート用
+      if params[:view].to_i == 1 #みんなのテイスティングノート用
         @tastingnotes = Tastingnote.eager_load(:sake, :account).where(tastingnotes: {sake_id: params[:sake_id], deleted_at: 0 }).where.not(tastingnotes: { account_id: params[:account_id] }).where(accounts: { public_private: 0 }).order(tasting_day: :desc).page(params[:page])
         @view_num = 1
-        params[:cnt_flg] = nil
-      elsif params[:cnt_flg].to_i == 2 #My日本酒マップ用
+        params[:view] = nil
+      elsif params[:view].to_i == 2 #My日本酒マップ用
         #テイスティングの合計
         @tastingnote_nums = Tastingnote.where(tastingnotes: {account_id: current_account.id, deleted_at: 0}).count
         
@@ -19,9 +19,12 @@ class TastingnotesController < ApplicationController
         
         #酒蔵制覇数
         @tastingnote_sakagura_nums = Tastingnote.find_by_sql(['select count(*),region, region_id from (SELECT distinct todofukens.region, todofukens.region_id, sakaguras.id FROM `tastingnotes` INNER JOIN `sakes` ON `sakes`.`id` = `tastingnotes`.`sake_id` INNER JOIN `sakaguras` ON `sakaguras`.`id` = `sakes`.`sakagura_id` INNER JOIN `todofukens` ON `todofukens`.`id` = `sakaguras`.`todofuken_id` WHERE `tastingnotes`.`account_id` = ? AND `tastingnotes`.`deleted_at` = 0) as sakagura_num group by region,region_id ORDER BY region_id ASC', current_account.id]).pluck('region_id','count(*)')
+
+        #出身地域
+        @region_id = Account.eager_load(:todofuken).where(accounts: {id: current_account})
         
         @view_num = 2
-        params[:cnt_flg] = nil
+        params[:view] = nil
       else 
         @tastingnotes = Tastingnote.eager_load(:sake, :account).where(tastingnotes: {account_id: current_account.id, deleted_at: 0 }).order(tasting_day: :desc).page(params[:page])
         @view_num = 1
@@ -84,6 +87,7 @@ class TastingnotesController < ApplicationController
     
     redirect_to :action => "index"
   end
+  
   
   private
 

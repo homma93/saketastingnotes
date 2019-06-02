@@ -1,0 +1,37 @@
+<div class="container-fluid mb-4" style="font-size:small;">
+  <div class="row">
+    <%= render 'layouts/lsidebar' %>
+    
+    <div class="col-sm-6 border">
+      <div class="row mt-4">
+        <div class="col-sm-12 h4">
+          酒造組合サイト
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-sm-12">
+          <table class="table table-striped table-bordered">
+            <tr>
+              <th>地域</th>
+              <th>都道府県</th>
+              <th>酒造組合名</th>
+              <th>酒造組合</th>
+              <th>酒蔵数</th>
+            </tr>
+          <% @todofukens.each do |todofuken| %>
+            <tr>
+              <td><%= todofuken.region %></td>
+              <td><%= todofuken.todofuken_name %></td>
+              <td><%= todofuken.kumiai_name %></td>
+              <td><%= link_to 'Link', todofuken.kumiai_url, :target=>["_blank"]%></td>
+              <td><%= todofuken.sakagura_num %></td>
+            </tr>
+          <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <%= render 'layouts/rsidebar' %>
+  </div>
+</div>

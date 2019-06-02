@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   #tastingnote関連のroutes
   resources :tastingnotes
   
+  #酒造組合サイト
+  get 'syuzo_kumiai', to: 'todofukens#index'
+  resources :todofukens, only: [:index]
+  
   #sessionのroutes
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
