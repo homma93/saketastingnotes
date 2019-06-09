@@ -1,0 +1,93 @@
+.sakemap {
+  position: relative;/*相対配置*/
+  }
+
+.sakemap > .hokkaido {
+  position: absolute;/*絶対配置*/
+  font-size: 1.5rem;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
+  top: 7%;
+  left: 83%;
+  }
+  
+.sakemap > .tofoku {
+  position: absolute;/*絶対配置*/
+  font-size: 1.5rem;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
+  top: 36%;
+  left: 79%;
+  }
+
+.sakemap > .kanto {
+  position: absolute;/*絶対配置*/
+  font-size: 1.5rem;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
+  top: 62%;
+  left: 79%;
+  }
+
+.sakemap > .hokuriku {
+  position: absolute;/*絶対配置*/
+  font-size: 1.5rem;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
+  top: 47%;
+  left: 63%;
+  }
+
+.sakemap > .koushin {
+  position: absolute;/*絶対配置*/
+  font-size: 1.5rem;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
+  top: 62%;
+  left: 65%;
+  }
+
+.sakemap > .tokai {
+  position: absolute;/*絶対配置*/
+  font-size: 1.5rem;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
+  top: 72%;
+  left: 56%;
+  }
+
+.sakemap > .kansai {
+  position: absolute;/*絶対配置*/
+  font-size: 1.5rem;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
+  top: 70%;
+  left: 46%;
+  }
+
+.sakemap > .chugoku {
+  position: absolute;/*絶対配置*/
+  font-size: 1.5rem;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
+  top: 62%;
+  left: 29%;
+  }
+
+.sakemap > .shikoku {
+  position: absolute;/*絶対配置*/
+  font-size: 1.5rem;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
+  top: 79%;
+  left: 30%;
+  }
+
+.sakemap > .kyusyu {
+  position: absolute;/*絶対配置*/
+  font-size: 1.5rem;
+  color: black;
+  text-shadow: 2px 2px 1px #999999;
+  top: 70%;
+  left: 13%;
+  }

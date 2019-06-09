@@ -52,18 +52,21 @@
             <%= f.label :how_to_drink, '飲み方' %>
           </div>
           <div class='col-sm-9'>
-            <%= f.radio_button :how_to_drink, 0, {checked: true} %> 冷
-            <%= f.radio_button :how_to_drink, 1, {} %> 常温
-            <%= f.radio_button :how_to_drink, 2, {} %> ぬる燗
+            <%= f.radio_button :how_to_drink, 0, {checked: true} %> 冷　
+            <%= f.radio_button :how_to_drink, 1, {} %> 常温　
+            <%= f.radio_button :how_to_drink, 2, {} %> ぬる燗　
             <%= f.radio_button :how_to_drink, 3, {} %> 熱燗
           </div>
         </div>
         <div class="row form-group">
           <div class='col-sm-3'>
-            <%= f.label :color, '種類' %>
+            <%= f.label :color, '色' %>
           </div>
           <div class='col-sm-9'>
-            <%= f.select :color, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+            <%= f.select :color, [['冴え（さえ）','1'],['照り（てり）','2'],['ぼけ','3'],['澄明度','4'],
+                                ['透明度','5'],['黄金色（こがねいろ）','6'],['番茶色（ばんちゃいろ）','7'],
+                                ['色沢良好（しきたくりょうこう）','8'],['色沢濃厚（しきたくのうこう）','9'],
+                                ['混濁','10'],['その他','999999']], class: 'form-control' %>
           </div>
         </div>
         <div class="row form-group">
@@ -71,8 +74,9 @@
             <%= f.label :smell, '香り' %>
           </div>
           <div class='col-sm-9'>
-            <%= f.select :smell, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
-          </div>
+            <%= f.select :smell, [['華やかな香り','1'],['爽やかな香り','2'],['穏やかな香り','3'],
+                                ['ふくよかな香り','4'],['その他','999999']], class: 'form-control' %>
+          </div>  
         </div>
         <div class="row form-group">
           <div class='col-sm-3'>
@@ -83,50 +87,70 @@
           </div>
         </div>
         <div class="row form-group">
-          <div class='col-sm-3'>
+          <div class='col-sm-1'>
             味
           </div>
-          <div class='col-sm-3'>
+          <div class='col-sm-2'>
             <%= f.label :sweet_taste, '甘味' %>
           </div>
-          <div class='col-sm-6'>
-            <%= f.select :sweet_taste, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          <div class='col-sm-9'>
+            <%= f.radio_button :sweet_taste, 1, {} %> 非常に強い　
+            <%= f.radio_button :sweet_taste, 2, {} %> 強い　
+            <%= f.radio_button :sweet_taste, 3, {checked: true} %> 普通　
+            <%= f.radio_button :sweet_taste, 4, {} %> 弱い　
+            <%= f.radio_button :sweet_taste, 5, {} %> 非常に弱い
           </div>
         </div>
         <div class="row form-group">
-          <div class='col-sm-3'></div>
-          <div class='col-sm-3'>
+          <div class='col-sm-1'></div>
+          <div class='col-sm-2'>
             <%= f.label :acidity, '酸味' %>
           </div>
-          <div class='col-sm-6'>
-            <%= f.select :acidity, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          <div class='col-sm-9'>
+            <%= f.radio_button :acidity, 1, {} %> 非常に強い　
+            <%= f.radio_button :acidity, 2, {} %> 強い　
+            <%= f.radio_button :acidity, 3, {checked: true} %> 普通　
+            <%= f.radio_button :acidity, 4, {} %> 弱い　
+            <%= f.radio_button :acidity, 5, {} %> 非常に弱い
           </div>
         </div>
         <div class="row form-group">
-          <div class='col-sm-3'></div>
-          <div class='col-sm-3'>
+          <div class='col-sm-1'></div>
+          <div class='col-sm-2'>
             <%= f.label :bitter_taste, '苦味' %>
           </div>
-          <div class='col-sm-6'>
-            <%= f.select :bitter_taste, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          <div class='col-sm-9'>
+            <%= f.radio_button :bitter_taste, 1, {} %> 非常に強い　
+            <%= f.radio_button :bitter_taste, 2, {} %> 強い　
+            <%= f.radio_button :bitter_taste, 3, {checked: true} %> 普通　
+            <%= f.radio_button :bitter_taste, 4, {} %> 弱い　
+            <%= f.radio_button :bitter_taste, 5, {} %> 非常に弱い
           </div>
         </div>
         <div class="row form-group">
-          <div class='col-sm-3'></div>
-          <div class='col-sm-3'>
+          <div class='col-sm-1'></div>
+          <div class='col-sm-2'>
             <%= f.label :umami, '旨味' %>
           </div>
-          <div class='col-sm-6'>
-            <%= f.select :umami, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          <div class='col-sm-9'>
+            <%= f.radio_button :umami, 1, {} %> 非常に強い　
+            <%= f.radio_button :umami, 2, {} %> 強い　
+            <%= f.radio_button :umami, 3, {checked: true} %> 普通　
+            <%= f.radio_button :umami, 4, {} %> 弱い　
+            <%= f.radio_button :umami, 5, {} %> 非常に弱い
           </div>
         </div>
         <div class="row form-group">
-          <div class='col-sm-3'></div>
-          <div class='col-sm-3'>
+          <div class='col-sm-1'></div>
+          <div class='col-sm-2 align-middle'>
             <%= f.label :alcohol, 'アルコール刺激' %>
           </div>
-          <div class='col-sm-6'>
-            <%= f.select :alcohol, [['透明','1'],['ピンク','2'],['白','3'],['その他','999999']], class: 'form-control' %>
+          <div class='col-sm-9'>
+            <%= f.radio_button :alcohol, 1, {} %> 非常に強い　
+            <%= f.radio_button :alcohol, 2, {} %> 強い　
+            <%= f.radio_button :alcohol, 3, {checked: true} %> 普通　
+            <%= f.radio_button :alcohol, 4, {} %> 弱い　
+            <%= f.radio_button :alcohol, 5, {} %> 非常に弱い
           </div>
         </div>
         <div class="row form-group">
@@ -143,6 +167,11 @@
           </div>
           <div class='col-sm-9'>
             <%= f.file_field :image %>
+            <% if @tastingnote.image.blank? %>
+              <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
+            <% else %>
+              <%= image_tag @tastingnote.image.url, class: 'img-fluid border rounded' %>
+            <% end %>
           </div>
         </div>
         <div class="row form-group">
@@ -151,6 +180,11 @@
           </div>
           <div class='col-sm-9'>
             <%= f.file_field :tumami_image1 %>
+            <% if @tastingnote.tumami_image1.blank? %>
+              <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
+            <% else %>
+              <%= image_tag @tastingnote.tumami_image1.url, class: 'img-fluid border rounded' %>
+            <% end %>
           </div>
         </div>
         <div class="row form-group">
@@ -159,6 +193,11 @@
           </div>
           <div class='col-sm-9'>
             <%= f.file_field :tumami_image2 %>
+            <% if @tastingnote.tumami_image2.blank? %>
+              <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
+            <% else %>
+              <%= image_tag @tastingnote.tumami_image2.url, class: 'img-fluid border rounded' %>
+            <% end %>
           </div>
         </div>
         <div class="row form-group">
@@ -167,6 +206,11 @@
           </div>
           <div class='col-sm-9'>
             <%= f.file_field :tumami_image3 %>
+            <% if @tastingnote.tumami_image3.blank? %>
+              <%= image_tag 'nophoto.jpg', class: 'img-fluid border rounded' %>
+            <% else %>
+              <%= image_tag @tastingnote.tumami_image3.url, class: 'img-fluid border rounded' %>
+            <% end %>
           </div>
         </div>
         <div class="row form-group">
@@ -174,20 +218,18 @@
             <%= f.label :comment, 'コメント' %>
           </div>
           <div class='col-sm-9'>
-            <%= f.text_field :comment, class: 'form-control input-lg' %>
+            <%= f.text_area :comment, size: "20x10", class: 'form-control input-lg' %>
           </div>
         </div>
         <div class="row form-group">
           <div class='col-sm-3'>
-            <%= f.label :evaluation, '総合評価' %>
+            <%= f.label :evaluation, '総合評価'%>
           </div>
           <div class='col-sm-9'>
-            <%= f.radio_button :evaluation, 0, {} %> 0点
-            <%= f.radio_button :evaluation, 1, {} %> 1点
-            <%= f.radio_button :evaluation, 2, {} %> 2点
-            <%= f.radio_button :evaluation, 3, {} %> 3点
-            <%= f.radio_button :evaluation, 4, {} %> 4点
-            <%= f.radio_button :evaluation, 5, {} %> 5点
+            <input name="evaluation" type="hidden" value=<%= @tastingnote.evaluation %> class='evaluation'/>
+            <div class="field" id="star">
+              <%= f.hidden_field :evaluation %>
+            </div>
           </div>
         </div>
         <div class="text-center mb-4">
@@ -199,3 +241,14 @@
     <%= render 'layouts/rsidebar' %>
   </div>
 </div>
+
+<script>
+$('#star').raty({
+  size     : 36,
+  number: 5,
+  score: $('.evaluation').val(),
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  scoreName: 'tastingnote[evaluation]' 
+});
+</script>

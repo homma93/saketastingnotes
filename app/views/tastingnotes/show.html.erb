@@ -5,7 +5,11 @@
       <div class="col-sm-6 border">
         <div class="row">
           <div class="col-sm-12 h5 text-danger mt-4">
-            銘柄:<%= @tastingnote.sake.meigara_name %> 　総合評価：<%= @tastingnote.evaluation.to_f %>
+            <input name="evaluation" type="hidden" value=<%= @tastingnote.evaluation %> class='evaluation'/>
+            <div class="field" id="star">
+              銘柄:<%= @tastingnote.sake.meigara_name %>　
+              総合評価:<%= @tastingnote.evaluation.to_f %> 
+            </div>
           </div>
         </div>
         <div class="row">
@@ -62,29 +66,39 @@
         </div>
         <div class="row mt-2">
            <div class="col-sm-2">種類：</div>
-           <div class="col-sm-10"><%= @tastingnote.sake_kind %> <%= @tastingnote.sake_supplement %></div>
+           <div class="col-sm-10"><%= sake_kind_conversion(@tastingnote.sake_kind) %> <%= @tastingnote.sake_supplement %></div>
         </div>
         <div class="row mt-2">
           <div class="col-sm-2">飲み方：</div>
-          <div class="col-sm-10"><%= @tastingnote.how_to_drink %></div>
+          <div class="col-sm-10"><%= how_to_drink_conversion(@tastingnote.how_to_drink) %></div>
         </div>
         <div class="row mt-2">
           <div class="col-sm-2">色：</div>
-          <div class="col-sm-10"><%= @tastingnote.color %></div>
+          <div class="col-sm-10"><%= color_conversion(@tastingnote.color) %></div>
         </div>
         <div class="row mt-2">
           <div class="col-sm-2">香り：</div>
-          <div class="col-sm-10"><%= @tastingnote.smell %> <%= @tastingnote.smell_supplement %></div>
+          <div class="col-sm-10"><%= smell_conversion(@tastingnote.smell) %> <%= @tastingnote.smell_supplement %></div>
         </div>
         <div class="row mt-2">
           <div class="col-sm-2">味：</div>
-          <div class="col-sm-10">
-            甘味　<%= @tastingnote.sweet_taste %>　
-            酸味　<%= @tastingnote.acidity %>　
-            苦味　<%= @tastingnote.bitter_taste %>　
-            旨味　<%= @tastingnote.smell %> <%= @tastingnote.umami %>　
-            アルコール刺激　<%= @tastingnote.alcohol %>
-          </div>
+          <div class="col-sm-10">甘味　<%= taste_conversion(@tastingnote.sweet_taste) %></div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">酸味　<%= taste_conversion(@tastingnote.acidity) %></div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">苦味　<%= taste_conversion(@tastingnote.bitter_taste) %></div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">旨味　<%= taste_conversion(@tastingnote.umami) %></div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">アルコール刺激　<%= taste_conversion(@tastingnote.alcohol) %></div>
         </div>
         <div class="row mt-2">
           <div class="col-sm-12"><%= @tastingnote.taste_supplement %></div>
@@ -100,3 +114,14 @@
     <%= render 'layouts/rsidebar' %>
   </div>
 </div>
+
+<script>
+$('#star').raty({
+  size     : 48,
+  number: 5,
+  score: $('.evaluation').val(),
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  scoreName: 'tastingnote[evaluation]' 
+});
+</script>

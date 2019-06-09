@@ -2,8 +2,12 @@
   <% @tastingnotes.each do |tastingnote| %>
     <div class="row mt-8">
       <div class="col-sm-12 h5 text-danger mt-4">
-        銘柄:<%= tastingnote.sake.meigara_name %> 　総合評価：<%= tastingnote.evaluation.to_f %>
-      </div>
+            <input name="evaluation" type="hidden" value=<%= tastingnote.evaluation %> class='evaluation'/>
+            <div class="field" id="star">
+              銘柄:<%= tastingnote.sake.meigara_name %>　
+              総合評価:<%= tastingnote.evaluation.to_f %> 
+            </div>
+          </div>
     </div>
     <div class="row">
       <div class="col-sm-12 text-muted">
@@ -75,3 +79,14 @@
     <div class="row border-bottom"><hr></div>
   <% end %>
 </div>
+
+<script>
+$('#star').raty({
+  size     : 36,
+  number: 5,
+  score: $('.evaluation').val(),
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  scoreName: 'tastingnote[evaluation]' 
+});
+</script>

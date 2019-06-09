@@ -53,4 +53,64 @@ module TastingnotesHelper
     
     return @place
   end
+  
+  def sake_kind_conversion(sake_kind)
+    case sake_kind
+      when 1 then "普通酒"
+      when 2 then "本醸造酒"
+      when 3 then "特別本醸造酒"
+      when 4 then "純米酒"
+      when 5 then "特別純米酒"
+      when 6 then "吟醸酒"
+      when 7 then "純米吟醸酒"
+      when 8 then "大吟醸酒"
+      when 9 then "純米大吟醸酒"
+      when 999999 then "その他・不明"
+    end
+  end
+  
+  def how_to_drink_conversion(how_to_drink)
+    case how_to_drink
+      when 0 then "冷"
+      when 1 then "常温"
+      when 2 then "ぬる燗"
+      when 3 then "熱燗"
+    end
+  end
+  
+  def color_conversion(color)
+    case color
+      when 1 then "冴え（さえ）"
+      when 2 then "照り（てり）"
+      when 3 then "ぼけ"
+      when 4 then "澄明度"
+      when 5 then "透明度"
+      when 6 then "黄金色（こがねいろ）"
+      when 7 then "番茶色（ばんちゃいろ）"
+      when 8 then "色沢良好（しきたくりょうこう）"
+      when 9 then "色沢濃厚（しきたくのうこう）"
+      when 10 then "混濁"
+      when 999999 then "その他"
+    end
+  end
+  
+  def smell_conversion(smell)
+    case smell
+      when 1 then "華やかな香り"
+      when 2 then "爽やかな香り"
+      when 3 then "穏やかな香り"
+      when 4 then "ふくよかな香り"
+      when 999999 then "その他"
+    end
+  end
+  
+  def taste_conversion(taste)
+    case taste
+      when 1 then "非常に強い"
+      when 2 then "強い"
+      when 3 then "普通"
+      when 4 then "弱い"
+      when 5 then "非常に弱い"
+    end
+  end
 end
