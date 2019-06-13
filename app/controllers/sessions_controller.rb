@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
   def new
+    if logged_in?
+      @tastingnotes = Tastingnote.eager_load(:sake, :account).where(tastingnotes: {account_id: current_account.id, deleted_at: 0 }).order(tasting_day: :desc).page(params[:page])
+      @view_num = 1
+    end
   end
 
   def create

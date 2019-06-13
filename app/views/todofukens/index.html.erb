@@ -3,6 +3,16 @@
     <%= render 'layouts/lsidebar' %>
     
     <div class="col-sm-6 border">
+      <div class="mt-4">地域または都道府県名を入力</div>
+      <div class="row mt-8">
+        <div class="col-sm-12">
+          <%= form_tag(todofukens_path, :method => 'get' ) do %>
+            <%= text_field_tag :id %>
+            <%= hidden_field_tag :serch, "3" %>
+            <%= submit_tag '検索' %>
+          <% end %>
+        </div>
+      </div>
       <div class="row mt-4">
         <div class="col-sm-12 h4">
           酒造組合サイト

@@ -6,10 +6,8 @@
         <div class="row">
           <div class="col-sm-12 h5 text-danger mt-4">
             <input name="evaluation" type="hidden" value=<%= @tastingnote.evaluation %> class='evaluation'/>
-            <div class="field" id="star">
-              銘柄:<%= @tastingnote.sake.meigara_name %>　
-              総合評価:<%= @tastingnote.evaluation.to_f %> 
-            </div>
+            銘柄:<%= @tastingnote.sake.meigara_name %>　
+            総合評価:<span class="field" id="star"></span> <%= @tastingnote.evaluation.to_f %> 
           </div>
         </div>
         <div class="row">

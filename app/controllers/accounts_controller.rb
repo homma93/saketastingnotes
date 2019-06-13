@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  before_action :correct_account, only: [:edit]
+  
   def new
     @account = Account.new
   end
@@ -27,12 +29,16 @@ class AccountsController < ApplicationController
     end
   end
 
-  def destroy
-  end
-  
   private
   
   def account_params
     params.require(:account).permit(:mail_address, :account_name, :birthday, :sex, :todofuken_id, :password, :password_confirmation, :public_private)
+  end
+  
+  def correct_account
+    @account = Account.find_by(id: params[:id])
+    if @account.nil? || params[:id].to_i != session[:user_id].to_i
+      redirect_to root_url
+    end
   end
 end

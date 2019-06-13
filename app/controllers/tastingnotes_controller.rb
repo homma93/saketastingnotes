@@ -1,5 +1,6 @@
 class TastingnotesController < ApplicationController
   before_action :require_account_logged_in
+  before_action :correct_account, only: [:edit, :destroy]
   
   def index
     if logged_in?
@@ -24,6 +25,17 @@ class TastingnotesController < ApplicationController
         @region_id = Account.eager_load(:todofuken).where(accounts: {id: current_account})
         
         @view_num = 2
+        params[:view] = nil
+      elsif params[:view].to_i == 3 #検索用
+        @tastingnotes = Tastingnote.eager_load(:sake, :account).where(tastingnotes: {account_id: current_account.id, deleted_at: 0 }).where("sakes.meigara_name LIKE :meigara_name", meigara_name: "%#{params[:meigara_name]}%").order(tasting_day: :desc).page(params[:page])
+
+        if @tastingnotes.blank?
+          @tastingnotes = Tastingnote.eager_load(:sake, :account).where(tastingnotes: {account_id: current_account.id, deleted_at: 0 }).order(tasting_day: :desc).page(params[:page])
+          @view_num = 1
+          flash.now[:danger] = '該当するテイスティングノートはありません。'
+        end
+        
+        @view_num = 1
         params[:view] = nil
       else 
         @tastingnotes = Tastingnote.eager_load(:sake, :account).where(tastingnotes: {account_id: current_account.id, deleted_at: 0 }).order(tasting_day: :desc).page(params[:page])
@@ -98,4 +110,12 @@ class TastingnotesController < ApplicationController
                                         :umami, :alcohol, :taste_supplement, :image, :tumami_image1, 
                                         :tumami_image2, :tumami_image3, :comment, :evaluation )
   end
+  
+  def correct_account
+    @tastingnote = current_account.tastingnotes.find_by(id: params[:id])
+    if @tastingnote.nil?
+      redirect_to root_url
+    end
+  end
+  
 end
